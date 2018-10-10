@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Todo List</h1>
+</header>
+<main class="two-panes">
+	<nav id="my-project-list" class="project-list pane left-pane">
+		<h2>Projects</h2>
+		<ul class="list deletable-list selectable-list">
+						<li class="list-item selectable-list-item-selected">
+							<span class="list-item-caption">Project 1</span>
+							<input class="deletable-list-delete-button" type="button" value="×"/>
+						</li>
+						<li class="list-item">
+							<span class="list-item-caption">Project 2</span>
+							<input class="deletable-list-delete-button" type="button" value="×"/>
+						</li>
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar">
+			<legend class="foldable-header">New Project</legend>
+			<div class="foldable-content">
+				<input class="registrar-text" type="text"/>
+				<input class="registrar-add-button" type="button" value="ADD"/>
+			</div>
+		</fieldset>
+	</nav>
+</main>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.Promise');
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.ui.Component');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/foldable.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/registrar.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/event/asynchronous-trial-event.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-item.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/selectable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/deletable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/dto/project.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/container/project-list.js"></script>
+<script type="text/javascript">
+	var projectList = new wap.bootcamp.todolist.container.ProjectList();
+	var $projectList = goog.dom.getElement('my-project-list');
+	projectList.decorate($projectList);
+
+	var listItemOf3 = projectList.addProject({
+	  title: 'Project 3'
+	});
+
+	var listItemOf4 = projectList.addProject({
+	  title: 'Project 4',
+	  id: 4
+	});
+
+	var listItems = projectList.addProjects([
+	  {
+	    title: 'Project 5'
+	  }, {
+	    title: 'Project 6',
+	    id: 6
+	  }
+	]);
+
+	console.log(projectList.getProjectIdFrom(listItemOf3));
+	console.log(projectList.getProjectIdFrom(listItemOf4));
+	console.log(projectList.getProjectIdFrom(listItems[0]));
+	console.log(projectList.getProjectIdFrom(listItems[1]));
+
+	goog.events.listen(
+	  projectList,
+	  wap.bootcamp.todolist.container.ProjectList.EventType.DELETE_PROJECT,
+	  function(event) {
+	    event.trial.resolve(event.target);
+	 });
+</script>
+</body>
+</html>

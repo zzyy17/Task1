@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HUE Bootcamp CS-I / Foldable UI component</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Foldable UI component</h1>
+</header>
+
+<section>
+	<h2>wap.bootcamp.todolist.ui.foldable</h2>
+	<fieldset id="my-foldable" class="foldable foldable-expanded">
+		<legend class="foldable-header">LOREM IPSUM</legend>
+		<p class="foldable-content">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</fieldset>
+</section>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.ui.Component');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/foldable.js"></script>
+<script type="text/javascript">
+	var foldable = new wap.bootcamp.todolist.ui.Foldable();
+	var $foldable = goog.dom.getElement('my-foldable');
+	foldable.decorate($foldable);
+</script>
+</body>
+</html>

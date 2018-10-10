@@ -1,0 +1,29 @@
+.registrar {
+	&-text {
+		.round-bordered;
+		width: calc(~"100% - "(@inner-pane-padding * 2 + @button-width));
+
+		&-has-error {
+			border-color: red;
+			box-shadow: 0 0 1px 1px rgba(255, 0, 0, 0.5);
+		}
+	}
+
+	&-add-button {
+		width: @button-width;
+	}
+
+	&-validation {
+		&-error-message {
+			font-size: 70%;
+			text-align: right;
+			color: red;
+			min-height: 14px;
+			margin: 0 (@inner-pane-padding + @button-width) -@inner-pane-padding 0;
+		}
+
+		&-valid {
+			visibility: hidden;
+		}
+	}
+}

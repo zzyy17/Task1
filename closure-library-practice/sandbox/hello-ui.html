@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HUE Bootcamp CS-I / Hello, UI component!</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Hello, UI component!</h1>
+</header>
+<section>
+	<h2>goog.ui.Button Component</h2>
+	<button id="hello-button" class="goog-button">Say Hello</button>
+</section>
+
+<hr/>
+
+<section>
+	<h2>Hello, List component!</h2>
+	<ul id="list" class="list selectable-list">
+		<li id="list-item-1" class="list-item selectable-list-item selectable-list-item-selected"><span class="list-item-caption">Item 1</span></li>
+		<li id="list-item-2" class="list-item selectable-list-item"><span class="list-item-caption">Item 2</span></li>
+		<li id="list-item-3" class="list-item selectable-list-item"><span class="list-item-caption">Item 3</span></li>
+	</ul>
+</section>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.ui.Button');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-item.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/selectable-list-plugin.js"></script>
+<script type="text/javascript">
+	var $button = goog.dom.getElement('hello-button');
+	var button = goog.ui.decorate($button);
+
+	function showMessage(event) {
+		alert('Hello, UI component!');
+	}
+	goog.events.listen(button, goog.ui.Component.EventType.ACTION, showMessage);
+
+	var list = new wap.bootcamp.common.ui.List([
+		wap.bootcamp.common.ui.SelectableListPlugin.getInstance()
+	]);
+	var $list = goog.dom.getElement('list');
+	list.decorate($list);
+
+	function onItemSelected(event) {
+		/** @type {wap.bootcamp.common.ui.ListItem} */
+		var listItem = event.target;
+		
+		/** Add from here */
+		if (listItem.getCaption() === 'Item 3') {
+		 	event.preventDefault();
+			return;
+		}
+		/** Add to here */
+	  
+		alert('Item "' + listItem.getCaption() + '" is selected.');
+	}
+	goog.events.listen(list, wap.bootcamp.common.ui.SelectableListPlugin.EventType.ITEM_SELECT, onItemSelected);
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HUE Bootcamp CS-I / Registrar UI component</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Registrar UI component</h1>
+</header>
+
+<section>
+  <h2>wap.bootcamp.todolist.ui.Registrar</h2>
+  <div id="my-registrar" class="registrar">
+    <input class="registrar-text" type="text"/>
+    <input class="registrar-add-button" type="button" value="ADD" disabled="disabled"/>
+   	<p class="registrar-validation-error-message"></p>
+  </div>
+</section>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.string.format');
+	goog.require('goog.ui.Component');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/registrar.js"></script>
+<script type="text/javascript">
+	var registrar = new wap.bootcamp.todolist.ui.Registrar();
+	var $registrar = goog.dom.getElement('my-registrar');
+	registrar.decorate($registrar);
+	goog.events.listen(registrar, wap.bootcamp.todolist.ui.Registrar.EventType.ADD, function(event) {
+	  if (goog.string.isEmptySafe(event.text)) {
+	    event.preventDefault();
+	    return;
+	  }
+	  if (event.text === 'cancel') {
+	    alert('Event will be cancelled.');
+	    event.preventDefault();
+	    return;
+	  }
+	  alert(goog.string.format('[ADD] button clicked: %s', event.text));
+	});
+	goog.events.listen(registrar,wap.bootcamp.todolist.ui.Registrar.EventType.VALIDATE,
+    	function(event) {
+      var text = event.target;
+      if (event.target === 'error') {
+        event.trial.reject('Title must not be "error"');
+      } else {
+        event.trial.resolve();
+      }
+      event.preventDefault();
+    }
+);
+</script>
+</body>
+</html>

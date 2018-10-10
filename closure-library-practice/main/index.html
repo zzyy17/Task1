@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Todo List</h1>
+</header>
+<main class="two-panes">
+	<nav class="project-list pane left-pane">
+		<h2>Projects</h2>
+		<ul class="list deletable-list selectable-list">
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar">
+			<legend class="foldable-header">New Project</legend>
+			<div class="foldable-content">
+				<input type="text" class="registrar-text"/>
+				<input type="button" value="ADD" class="registrar-add-button"/>
+			</div>
+		</fieldset>
+	</nav>
+	<section class="task-list pane right-pane disabled">
+		<h2 class="project-name"><!--Project 1--></h2>
+		<ul class="list checkable-list">
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar registrar-disabled">
+			<legend class="foldable-header">New Task</legend>
+			<div class="foldable-content">
+				<input type="text" class="registrar-text" disabled="disabled"/>
+				<input type="button" value="ADD" class="registrar-add-button" disabled="disabled"/>
+			</div>
+		</fieldset>
+	</section>
+</main>
+
+<!-- for product -->
+<script type="text/javascript" src="js/todolist.js"></script>
+
+<!-- for debugging -->
+<!--
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.array');
+	goog.require('goog.dom');
+	goog.require('goog.dom.classlist');
+	goog.require('goog.events.EventType');
+	goog.require('goog.functions');
+	goog.require('goog.testing.events');
+	goog.require('goog.ui.Component');
+	goog.require('goog.ui.Control');
+</script>
+<script type="text/javascript" src="js/bootcamp/common/event/asynchronous-trial-event.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/logic/promise.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/ui/foldable.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/ui/registrar.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/list-item.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/list-plugin.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/list.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/deletable-list-plugin.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/checkable-list-plugin.js"></script>
+<script type="text/javascript" src="js/bootcamp/common/ui/selectable-list-plugin.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dto/project.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dto/task.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/container/project-list.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/container/task-list.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/container/application.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dao/mock.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dao/project-dao.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dao/project-dao-mock-impl.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dao/task-dao.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/dao/task-dao-mock-impl.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/todolist-app.js"></script>
+<script type="text/javascript" src="js/bootcamp/todolist/todolist-init.js"></script>
+-->
+</body>
+</html>

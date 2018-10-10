@@ -1,0 +1,111 @@
+.foldable {
+  border: 0 none;
+  padding: 0;
+}
+.foldable-toggle-button:hover {
+  font-weight: bold;
+}
+.foldable-expanded > .foldable-header:before {
+  content: '▲ ';
+  font-size: 50%;
+}
+.foldable-contracted > .foldable-header:before {
+  content: '▼ ';
+  font-size: 50%;
+}
+.foldable-contracted > .foldable-content {
+  display: none;
+}
+.registrar-text {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  width: calc(100% -  70px);
+}
+.registrar-text-has-error {
+  border-color: red;
+  box-shadow: 0 0 1px 1px rgba(255, 0, 0, 0.5);
+}
+.registrar-add-button {
+  width: 50px;
+}
+.registrar-validation-error-message {
+  font-size: 70%;
+  text-align: right;
+  color: red;
+  min-height: 14px;
+  margin: 0 60px -10px 0;
+}
+.registrar-validation-valid {
+  visibility: hidden;
+}
+.list {
+  margin: 0;
+  padding-left: 0;
+}
+.list-item {
+  list-style: none;
+  border: 1px grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+.list-item:hover {
+  background-color: gainsboro;
+}
+input[type=button].deletable-list-delete-button {
+  border: none;
+  background: transparent;
+  float: right;
+  height: 20px;
+}
+.selectable-list-item-selected {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+.checkable-list-item-checked {
+  background-color: #eee;
+  color: grey;
+}
+body {
+  margin: auto;
+  margin-top: 10px;
+  width: 800px;
+}
+input[type=button] {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  background: transparent;
+}
+h1 {
+  margin-left: 11px;
+}
+h2 {
+  margin: 0;
+  margin-bottom: 10px;
+  margin-left: 4px;
+}
+fieldset {
+  margin: 0;
+  margin-top: 10px;
+}
+.two-panes {
+  display: flex;
+}
+.left-pane {
+  width: 300px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+.right-pane {
+  margin-left: 10px;
+  width: calc(100% -  310px);
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+.pane {
+  padding: 10px;
+}

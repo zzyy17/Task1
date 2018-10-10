@@ -1,0 +1,81 @@
+@import "_foldable";
+@import "_registrar";
+@import "../common/_list";
+@import "../common/_deletable-list";
+@import "../common/_selectable-list";
+@import "../common/_checkable-list";
+
+@border-radius: 5px;
+@page-width: 800px;
+@left-pane-width: 300px;
+@basic-space: 10px;
+@inter-pane-margin: @basic-space;
+@inner-pane-padding: @basic-space;
+@button-width: 50px;
+
+.round-bordered() {
+	border: 1px solid grey;
+	border-radius: @border-radius;
+	padding: @border-radius;
+}
+
+.round-bordered-like() {
+	border: 1px grey;
+	border-radius: @border-radius;
+	padding: @border-radius;
+}
+
+.round-outlined() {
+	outline: 1px solid grey;
+	outline-radius: @border-radius;
+	-o-outline-radius: @border-radius;
+	-ms-outline-radius: @border-radius;
+	-moz-outline-radius: @border-radius;
+	-webkit-outline-radius: @border-radius;
+	border: 0 none;
+}
+
+body {
+	margin: auto;
+	margin-top: @basic-space;
+	width: @page-width;
+}
+
+input[type=button] {
+	.round-bordered;
+	background: transparent;
+}
+
+h1 {
+	margin-left: @inner-pane-padding + 1;
+}
+
+h2 {
+	margin: 0;
+	margin-bottom: @basic-space;
+	margin-left: @border-radius - 1px;
+}
+
+fieldset {
+	margin: 0;
+	margin-top: @basic-space;
+}
+
+.two-panes {
+	display: flex;
+}
+
+.left-pane {
+	width: @left-pane-width;
+	.round-bordered;
+}
+
+.right-pane {
+	margin-left: @inter-pane-margin;
+	width: calc(~"100% - "(@left-pane-width + @inter-pane-margin));
+	.round-bordered;
+}
+
+.pane {
+	padding: @inner-pane-padding; // .round-borderedを上書き
+}

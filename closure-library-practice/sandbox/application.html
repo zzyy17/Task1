@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Todo List</h1>
+</header>
+<main id="my-application" class="todo-application two-panes">
+	<nav class="project-list pane left-pane">
+		<h2>Projects</h2>
+		<ul class="list deletable-list selectable-list">
+						<li class="list-item">
+							<span class="list-item-caption">Project 1</span>
+							<input class="deletable-list-delete-button" type="button" value="×"/>
+						</li>
+						<li class="list-item selectable-list-item-selected">
+							<span class="list-item-caption">Project 2</span>
+							<input class="deletable-list-delete-button" type="button" value="×"/>
+						</li>
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar">
+			<legend class="foldable-header">New Project</legend>
+			<div class="foldable-content">
+				<input type="text" class="registrar-text"/>
+				<input type="button" value="ADD" class="registrar-add-button"/>
+			</div>
+		</fieldset>
+	</nav>
+	<section class="task-list pane right-pane">
+		<h2 class="project-name">Project 2</h2>
+		<ul class="list checkable-list">
+			<li class="list-item">
+				<input class="checkable-list-checkbox" type="checkbox"/>
+				<span class="list-item-caption">Task 1</span>
+			</li>
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar">
+			<legend class="foldable-header">New Task</legend>
+			<div class="foldable-content">
+				<input type="text" class="registrar-text"/>
+				<input type="button" value="ADD" class="registrar-add-button"/>
+			</div>
+		</fieldset>
+	</section>
+</main>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.Promise');
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.ui.Component');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/foldable.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/registrar.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/event/asynchronous-trial-event.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-item.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/checkable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/selectable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/deletable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/dto/project.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/dto/task.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/container/project-list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/container/task-list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/container/application.js"></script>
+<script type="text/javascript">
+  var application = new wap.bootcamp.todolist.container.Application();
+	var $application = goog.dom.getElement('my-application');
+	application.decorate($application);
+
+	goog.events.listen(
+			application,
+			wap.bootcamp.todolist.container.ProjectList.EventType.DELETE_PROJECT,
+			function(event) {
+				event.trial.resolve();
+			});
+
+	goog.events.listen(
+			application,
+			wap.bootcamp.todolist.container.TaskList.EventType.UPDATE_TASK,
+			function(event) {
+				event.trial.resolve();
+			});
+
+</script>
+</body>
+</html>

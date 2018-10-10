@@ -1,0 +1,28 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "globals": {
+    "goog": true,
+    "wap": true
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "eqeqeq": ["error", "smart"],
+    "no-warning-comments": ["error", { "terms": ["todo"], "location": "anywhere" }],
+    "no-new-object": "error",
+    "no-extend-native": "error",
+    "semi": ["error", "always"],
+    "no-eval": "error",
+    "no-with": "error",
+    "no-multi-str": "error",
+    "no-sparse-arrays": "error",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "max-len": ["error", { "code": 120 }],
+    "quotes": ["error", "single"],
+    "spaced-comment": ["error", "always"],
+    "space-before-function-paren": ["error", "never"]
+  }
+}

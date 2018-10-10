@@ -1,0 +1,28 @@
+.foldable {
+	border: 0 none;
+	padding: 0;
+
+	&-toggle-button {
+		&:hover {
+			font-weight: bold;
+		}
+	}
+
+	.toggle-icon() {
+		font-size: 50%;
+	}
+
+	&-expanded > &-header:before {
+		content: '▲ ';
+		.toggle-icon;
+	}
+
+	&-contracted > &-header:before {
+		content: '▼ ';
+		.toggle-icon;
+	}
+
+	&-contracted > &-content {
+		display: none;
+	}
+}

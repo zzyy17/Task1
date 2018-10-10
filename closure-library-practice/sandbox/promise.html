@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HUE Bootcamp CS-I / Foldable UI component</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Promise</h1>
+</header>
+
+<section>
+	<p>Open console and try your own code!</p>
+</section>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.string.format');
+	goog.require('goog.Promise');
+</script>
+<script type="text/javascript">
+	var randomDelay = function() {
+		return Math.random() * 5000;
+	};
+  var ProjectDao = function() {
+		this.data_ = [
+			{ id: 1, name: 'Client Side Intermediate' },
+			{ id: 2, name: 'Server Side Intermediate' },
+			{ id: 3, name: 'Elasticsearch Intermediate' }
+		];
+	};
+	ProjectDao.prototype.fetchById = function(id) {
+		return new goog.Promise(function(resolve, reject) {
+			setTimeout(function() {
+				var project = goog.array.find(this.data_, function(project) {
+					return project.id === id;
+				});
+				if (project) {
+					resolve(project);
+				} else {
+					reject(new Error('Project not found: id = ' + id));
+				}
+			}.bind(this), randomDelay());
+		}.bind(this));
+	};
+	var TaskDao = function() {
+		this.data_ = [
+			{ id: 1, projectId: 1, name: 'Practice' },
+			{ id: 2, projectId: 1, name: 'Examination' },
+			{ id: 3, projectId: 2, name: 'Practice' },
+			{ id: 4, projectId: 2, name: 'Examination'},
+			{ id: 5, projectId: 3, name: 'Examination'}
+		];
+	};
+	TaskDao.prototype.fetchByProjectId = function(projectId) {
+		return new goog.Promise(function(resolve, reject) {
+			setTimeout(function() {
+				resolve(goog.array.filter(this.data_, function(task) { return task.projectId === projectId; }));
+			}.bind(this), randomDelay());
+		}.bind(this));
+	};
+	var projectDao = new ProjectDao();
+	var taskDao = new TaskDao();
+
+	var printProject = function(project) {
+		console.log(goog.string.format('[Project:%d] %s', project.id, project.name));
+		return project;
+	};
+	var printTasks = function(tasks) {
+		goog.array.forEach(tasks, function(task) {
+			console.log(goog.string.format('  [Task:%d] %s', task.id, task.name));
+		});
+		return tasks;
+	};
+	var printAll = function(data) {
+		var project = data[0];
+		var tasks = data[1];
+		printProject(project);
+		printTasks(tasks);
+		return data;
+	};
+	var printError = function(error) {
+		console.error(error);
+	};
+</script>
+</body>
+</html>

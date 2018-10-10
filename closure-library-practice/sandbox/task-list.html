@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../main/css/bootcamp/todolist/todolist.css"/>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<header>
+	<h1>Todo List</h1>
+</header>
+<main class="two-panes">
+	<section id="my-task-list" class="task-list pane right-pane">
+		<h2 class="project-name"></h2>
+		<ul class="list checkable-list">
+			<li class="list-item">
+				<input class="checkable-list-checkbox" type="checkbox"/>
+				<span class="list-item-caption">Task 1</span>
+			</li>
+		</ul>
+		<fieldset class="foldable foldable-expanded registrar">
+			<legend class="foldable-header">New Task</legend>
+			<div class="foldable-content">
+				<input type="text" class="registrar-text"/>
+				<input type="button" value="ADD" class="registrar-add-button"/>
+			</div>
+		</fieldset>
+	</section>
+</main>
+
+<script type="text/javascript" src="../lib/closure-library/closure/goog/base.js"></script>
+<script type="text/javascript">
+	goog.require('goog.Promise');
+	goog.require('goog.dom');
+	goog.require('goog.events');
+	goog.require('goog.ui.Component');
+</script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/foldable.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/ui/registrar.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/event/asynchronous-trial-event.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-item.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/list.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/common/ui/checkable-list-plugin.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/dto/project.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/dto/task.js"></script>
+<script type="text/javascript" src="../main/js/bootcamp/todolist/container/task-list.js"></script>
+<script type="text/javascript">
+	var taskList = new wap.bootcamp.todolist.container.TaskList();
+	var $taskList = goog.dom.getElement('my-task-list');
+	taskList.decorate($taskList);
+
+  taskList.setProject({
+		title: 'My project',
+		id: 1
+	});
+	taskList.addTask({
+		id: 1,
+		projectId: 1,
+		title: 'My Task 1',
+		done: false
+	});
+	taskList.addTasks([{
+		id: 2,
+		projectId: 1,
+		title: 'My Task 2',
+		done: false
+	}, {
+		id: 3,
+		projectId: 1,
+		title: 'My Task 3',
+		done: true
+	}]);
+
+	goog.events.listen(
+			taskList,
+			wap.bootcamp.todolist.container.TaskList.EventType.UPDATE_TASK,
+			function(event) {
+				event.trial.resolve(event.target);
+			});
+</script>
+</body>
+</html>
